@@ -1,0 +1,35 @@
+<div id="content" th:replace="content">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Listes des vols</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-group">
+        <%
+            for(Vol v : vols){
+                %>
+                    <div class="list-group-item d-flex justify-content-between align-items-center mb-3" th:each="vol : ${listVols}">
+                        <div>
+                            <h5 class="mb-1" th:text="${vol.depart.designation} + '-' + ${vol.destination.designation}"></h5>
+                            <small class="text-muted"><strong>Depart</strong>: <span th:text="${vol.date_depart}"></span></small>
+                            <small class="text-muted"><strong>Duree</strong>: <span th:text="${vol.duree_vol}"></span></small>
+                            <p>
+                                <small class="text-muted">Business:<%= v.getTarifs()[0].getTarif() %></small>
+                                <small class="text-muted">Economique:<%= v.getTarifs()[1].getTarif() %></small>
+                            </p>
+                            <p>
+                                <p><strong>Place restante : </strong></p>
+                                <small class="text-muted">Business:<%= v.getDispoB() %></small>
+                                <small class="text-muted">Economique:<%= v.getDispoE() %></small>
+                            </p>
+                            <a href="formReserv?idVol=<%= v.getIdVol() %>"><span class="badge bg-success fs-6">Reserver</span></a>
+                        </div>
+                    </div>
+                <%
+            }
+        %>
+    </div>
+</div>

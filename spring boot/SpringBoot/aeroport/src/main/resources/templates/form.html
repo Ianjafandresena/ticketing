@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des composants</title>
+    <link rel="stylesheet" th:href="@{/css/liste.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.2-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-5/css/all.min.css}">
+    <script th:src="@{/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<!-- header -->
+<div class="container-fluid" id="header" th:replace="~{header :: content}">
+</div>
+
+
+<div id="content" th:replace="~{|form/${form}| :: content}"></div>
+
+<script th:if="${message != null}" th:inline="javascript">
+    window.onload = function(){
+        alert(/*[[${message}]]*/);
+    };
+    
+</script>
+
+</body>
+</html>

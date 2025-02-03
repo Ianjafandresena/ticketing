@@ -1,0 +1,41 @@
+.col{
+    border-style: solid;
+    height: 675px;
+}
+.custom-color{
+    background-color: rgb(241, 234, 234);
+}
+.transit{
+    transform: translateX(10px);
+    opacity: 0;
+}
+.actif{
+    transition: all 0.5s ease;
+    display: block;
+    background-color: rgba(27, 73, 82, 0.233);
+}
+.non-actif{
+    transition: all 0.5s ease;
+    display: none;
+    opacity: 0;
+}
+.inverse{
+    opacity: 0;
+}
+#titre{
+    margin-top: 25%;
+    height: 50px;
+    text-align: center;
+}
+#zone{
+    margin-top: 1%;
+    border-style: solid;
+}
+#image_de_fond{
+    background-image: url("./../image/website-basic-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#entreprise{
+    margin-top: 40%;
+}

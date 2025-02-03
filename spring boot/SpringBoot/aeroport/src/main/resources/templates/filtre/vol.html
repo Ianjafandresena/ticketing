@@ -1,0 +1,38 @@
+<div th:fragment="content">
+    <!--filtre-->
+    <div id="filtre" class="filtre">
+        <h3>Filtre</h3>
+        <form id="form_filtre" th:action="listVol" th:object="${vol}" method="POST">
+            <input type="hidden" th:field="*{id_vol}" value="">
+            <div class="form-group">
+                <select th:field="*{depart}" id="vol_depart" class="form-control">
+                    <option value="" disabled selected>-- Ville de depart --</option>
+                    <option th:each="v : ${listVilles}" th:value="${v.id_ville}" th:text="${v.destination}" ></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select th:field="*{destination}" id="vol_destination" class="form-control">
+                    <option value="" disabled selected>-- Destination --</option>
+                    <option th:each="v:${listVilles}" th:value="${v.id_ville}" th:text="v.designation"></option>
+                </select>
+            </div>
+            <!-- duree minimale -->
+            <div class="form-group">
+                <label for="date_debut" class="form-label">Duree minimale</label>
+                <div class="form-group">
+                    <input type="text" id="date" name="minDuration" class="form-control" placeholder="hh:mm:ss" pattern="hh:mm:ss">
+                </div>
+            </div>
+            <!-- duree maximale-->
+            <div class="form-group">
+                <label for="date_fin" class="form-label">Duree maximal</label>
+                <div class="form-group">
+                    <input type="text" id="date" name="maxDuration" class="form-control" placeholder="hh:mm:ss" pattern="hh:mm:ss">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Rechercher</button>
+            <button type="button" onclick="fermerFormulaire()" class="btn btn-cancel">Annuler</button>
+        </form>
+    </div>
+</div>

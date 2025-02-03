@@ -1,0 +1,8 @@
+<div th:fragment="content">
+    <!-- bouton filtre  -->
+    <button class="btn btn-primary fixed-button" id="fixButton">
+        <i class="fas fa-filter"></i>
+    </button>
+
+    <div th:replace="~{|filtre/${filtre}| :: content}"></div>
+</div>

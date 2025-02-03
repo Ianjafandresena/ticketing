@@ -1,0 +1,75 @@
+<div id="content" th:fragment="content">
+    <div class="reservation-container">
+        <div class="reservation-header">
+            <h1 class="reservation-title">Liste des Réservations</h1>
+        </div>
+
+        <div class="reservation-table-wrapper">
+            <table class="reservation-table">
+                <thead>
+                    <tr>
+                        <th class="sortable">Client</th>
+                        <th class="sortable center">Date Réservation</th>
+                        <th class="sortable center">Vol</th>
+                        <th class="sortable">Classe</th>
+                        <th class="sortable center">Enfants</th>
+                        <th class="sortable center">Adultes</th>
+                        <th class="sortable number">Prix Total</th>
+                        <th class="center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="reserv : ${reservationList}">
+                        <td>
+                            <div class="client-info">
+                                <strong th:if="${reserv.client == null}">Particulier</strong>
+                                <strong th:if="${reserv.client != null}" th:text="${reserv.client.nom + ' ' + reserv.client.prenom}"></strong>
+                            </div>
+                        </td>
+                        <td class="center">
+                            <span class="date-badge" th:text="${reserv.date_reservation}"></span>
+                        </td>
+                        <td class="center">
+                            <span class="vol-badge" th:text="${reserv.vol.id_vol}"></span>
+                        </td>
+                        <td>
+                            <span class="classe-badge" th:text="${reserv.id_type_siege.designation}"></span>
+                        </td>
+                        <td class="center">
+                            <span class="count-badge" th:text="${reserv.nb_enfant}"></span>
+                        </td>
+                        <td class="center">
+                            <span class="count-badge" th:text="${reserv.nb_adulte}"></span>
+                        </td>
+                        <td class="number">
+                            <span class="price-display" th:text="${reserv.prix} + ' EUR'"></span>
+                        </td>
+                        <td class="center">
+                            <div class="export-container">
+                                <form th:action="@{/reservations/export}" th:object="${reduction}" method="GET" class="export-form">
+                                    <input type="hidden" name="id" th:value="${reserv.id_reservation}">
+                                    <div class="export-group">
+                                        <select name="type" class="export-select">
+                                            <option value="pdf">PDF</option>
+                                            <option value="csv">CSV</option>
+                                        </select>
+                                        <button type="submit" class="btn-export">
+                                            <i class="fas fa-download"></i>
+                                            Export
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="empty-state" th:if="${#lists.isEmpty(reservationList)}">
+            <i class="fas fa-calendar-times"></i>
+            <h3>Aucune réservation</h3>
+            <p>Il n'y a actuellement aucune réservation enregistrée.</p>
+        </div>
+    </div>
+</div>
