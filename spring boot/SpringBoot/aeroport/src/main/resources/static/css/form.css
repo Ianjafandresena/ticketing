@@ -1,0 +1,521 @@
+/* ===== CSS COMPLET RÉSERVATIONS ===== */
+
+/* Reset et base pour la page de réservations */
+.reservation-container {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+/* Override complet du body pour cette page */
+body:has(.reservation-container) {
+    background: #f8f9fa !important;
+    background-image: none !important;
+}
+
+/* Container principal */
+.reservation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* En-tête de la page */
+.reservation-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #007bff;
+}
+
+.reservation-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+/* Wrapper du tableau */
+.reservation-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e9ecef;
+    margin-top: 1.5rem;
+}
+
+/* Tableau principal */
+.reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* En-têtes du tableau */
+.reservation-table th {
+    background: #495057;
+    color: white;
+    font-weight: 600;
+    padding: 1.2rem 1rem;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    position: relative;
+}
+
+.reservation-table th.center {
+    text-align: center;
+}
+
+.reservation-table th.number {
+    text-align: right;
+}
+
+.reservation-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-table th.sortable:hover {
+    background: #5a6268;
+}
+
+.reservation-table th.sortable::after {
+    content: '↕';
+    position: absolute;
+    right: 0.5rem;
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+/* Corps du tableau */
+.reservation-table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    background: white;
+    color: #495057;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-table td.center {
+    text-align: center;
+}
+
+.reservation-table td.number {
+    text-align: right;
+}
+
+.reservation-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.reservation-table tbody tr:hover {
+    background: #e3f2fd;
+}
+
+.reservation-table tbody tr:hover td {
+    color: #2d3748;
+}
+
+/* Information client */
+.client-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.client-info strong {
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Badges */
+.date-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.vol-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #6f42c1;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.classe-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #28a745;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #fd7e14;
+    color: white;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+/* Affichage du prix */
+.price-display {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    white-space: nowrap;
+}
+
+/* Container d'export */
+.export-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.export-form {
+    margin: 0;
+    padding: 0;
+}
+
+.export-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.export-group:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Select d'export */
+.export-select {
+    border: none;
+    background: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-width: 70px;
+}
+
+.export-select:focus {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.export-select:hover {
+    background: #f8f9fa;
+}
+
+/* Bouton d'export */
+.btn-export {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.btn-export:hover {
+    background: #138496;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+.btn-export:active {
+    transform: translateY(0);
+}
+
+.btn-export i {
+    font-size: 0.8rem;
+}
+
+/* État vide */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6c757d;
+    background: white;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+    color: #adb5bd;
+}
+
+.empty-state h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #495057;
+    font-weight: 600;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    color: #6c757d;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reservation-table tbody tr {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.reservation-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.reservation-table tbody tr:nth-child(2) { animation-delay: 0.15s; }
+.reservation-table tbody tr:nth-child(3) { animation-delay: 0.2s; }
+.reservation-table tbody tr:nth-child(4) { animation-delay: 0.25s; }
+.reservation-table tbody tr:nth-child(5) { animation-delay: 0.3s; }
+.reservation-table tbody tr:nth-child(n+6) { animation-delay: 0.35s; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .reservation-container {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reservation-container {
+        margin: 0 0.5rem;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    
+    .reservation-title {
+        font-size: 2rem;
+    }
+    
+    .reservation-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .reservation-table {
+        min-width: 800px;
+    }
+    
+    .reservation-table th,
+    .reservation-table td {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .date-badge,
+    .vol-badge,
+    .classe-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .count-badge {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.85rem;
+    }
+    
+    .price-display {
+        font-size: 1rem;
+        padding: 0.5rem 0.7rem;
+    }
+    
+    .export-group {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.4rem;
+    }
+    
+    .export-select {
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .btn-export {
+        width: 100%;
+        justify-content: center;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservation-container {
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .reservation-title {
+        font-size: 1.6rem;
+    }
+    
+    .reservation-table {
+        min-width: 600px;
+    }
+    
+    .reservation-table th,
+    .reservation-table td {
+        padding: 0.6rem 0.3rem;
+        font-size: 0.75rem;
+    }
+    
+    .client-info strong {
+        font-size: 0.85rem;
+    }
+    
+    .empty-state {
+        padding: 2rem 1rem;
+    }
+    
+    .empty-state i {
+        font-size: 3rem;
+    }
+    
+    .empty-state h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Impression */
+@media print {
+    .reservation-container {
+        background: white;
+        box-shadow: none;
+        margin: 0;
+        padding: 1rem;
+    }
+    
+    .export-container {
+        display: none;
+    }
+    
+    .reservation-table {
+        font-size: 0.8rem;
+    }
+    
+    .reservation-table th,
+    .reservation-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+    .reservation-container {
+        background: #1a202c;
+        color: #e2e8f0;
+    }
+    
+    .reservation-table {
+        background: #1a202c;
+    }
+    
+    .reservation-table td {
+        background: #1a202c;
+        color: #e2e8f0;
+        border-bottom-color: #4a5568;
+    }
+    
+    .reservation-table tbody tr:nth-child(even) {
+        background: #2d3748;
+    }
+    
+    .reservation-table tbody tr:hover {
+        background: #4a5568;
+    }
+    
+    .export-group {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .export-select {
+        background: #1a202c;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .empty-state {
+        background: #1a202c;
+        color: #e2e8f0;
+    }
+}
