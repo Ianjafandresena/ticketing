@@ -22,7 +22,7 @@ import mg.itu.utils.ModelView;
 @Authentification(role={"admin"})
 public class DateCleanupController {
 
-    
+    @Get
     @Url(url="/date")
     public ModelView cleanupByDate(@Param(name="date") String date) throws Exception {
         
